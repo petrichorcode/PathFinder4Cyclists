@@ -1,6 +1,7 @@
 package com.jarrett.anthony.Components;
 
 /**
+ * Thanks to OpenSoucre BASICOSMParser for providing the implementation for an OSM PARSER.
  * An abstract class for a generic OSM object
  */
 import java.util.HashMap;
@@ -12,7 +13,7 @@ public abstract class Element{
     /** The object ID, unique per object type **/
     protected long id;
     /** The objects tags, which describe it **/
-    protected Map<String,String> tags;
+    Map<String,String> tags;
 
 //CONSTRUCTOR
     // Alt
@@ -23,7 +24,7 @@ public abstract class Element{
      *Default constructor, initialises ID
      * @param id the element ID
      */
-    public Element(long id){
+    Element(long id){
         this.id = id;
         tags = new HashMap<String,String>();
     }

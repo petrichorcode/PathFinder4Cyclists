@@ -17,8 +17,6 @@ public class GeoCodeHandler extends DefaultHandler {
     private double tempVal;
     private boolean lat = false;
     private boolean lng = false;
-    private String latValStr ="";
-    private String lngValStr ="";
     private double latVal = 0;
     private double lngVal = 0;
     /** Where the coordinates of the parsed address will be stored **/
@@ -59,16 +57,16 @@ public class GeoCodeHandler extends DefaultHandler {
     @Override
     public void characters(char[] ch, int start, int length) throws SAXException {
         if (lat) {
-            if(latVal == 0 && latVal >= 0){
-                latValStr = new String(ch, start, length);
+            if(latVal == 0){
+                String latValStr = new String(ch, start, length);
                 latVal = Double.parseDouble(latValStr);
                 System.out.println("lat: " + new String(ch, start, length));
                 lat = false;
             }
 
         } else if (lng) {
-            if(lngVal == 0 && lngVal >= 0){
-                lngValStr = new String(ch, start, length);
+            if(lngVal == 0){
+                String lngValStr = new String(ch, start, length);
                 lngVal = Double.parseDouble(lngValStr);
                 System.out.println("lng: " + new String(ch, start, length));
                 lng = false;
@@ -77,7 +75,7 @@ public class GeoCodeHandler extends DefaultHandler {
     }
 
     //GETTERS
-    public static Node getCords(){
+    static Node getCords(){
         return cords;
     }
 }

@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 /**
  * Binary Heap data structure to support A* algorithm
+ * Implementation credit goes to: https://github.com/kevinwang1975/PathFinder
  */
 public class BinaryHeap<T> {
 
@@ -13,14 +14,14 @@ public class BinaryHeap<T> {
     private int size =0;
 
     //CONSTRUCTOR
-    protected BinaryHeap(Comparator<T> c){
+    BinaryHeap(Comparator<T> c){
         this.comparator = c;
     }
 
     //OTHER METHODS
 
     //clear the heap
-    protected void clear(){
+    void clear(){
         Arrays.fill(array, 0, array.length, null);
         this.size = 0;
     }
@@ -39,7 +40,7 @@ public class BinaryHeap<T> {
         }
     }
     //add element to heap
-    public void add(T t){
+    void add(T t){
         size++;
         ensureCapacity();
         array[size] = t;
@@ -47,7 +48,7 @@ public class BinaryHeap<T> {
     }
     //remove top element from heap and put last element to top
     @SuppressWarnings("unchecked")
-    public T remove(){
+    T remove(){
         if (size > 0){
             Object obj = array[1];
             array[1] = array[size];
@@ -59,7 +60,7 @@ public class BinaryHeap<T> {
     }
 
     //remove a given element by replacing it with the last element
-    public void remove(T t){
+    void remove(T t){
         int index = indexOf(t);
         if(index != -1){
             if(index == size){
@@ -74,7 +75,7 @@ public class BinaryHeap<T> {
         }
     }
     //check for valid index
-    protected boolean contains(T t){
+    boolean contains(T t){
         return indexOf(t) != -1;
     }
 

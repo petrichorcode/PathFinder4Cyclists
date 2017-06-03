@@ -10,13 +10,13 @@ import java.util.Comparator;
 
 /**
  * A* algorithm with a BinaryHeap datastructure implementation.
+ * Implementation credit goes to: https://github.com/kevinwang1975/PathFinder
  */
 public class AStarPathFinder {
     private static Node[] adjacencies = RoadNetwork.getAdjLists();
     private static ArrayList<Node> stack = new ArrayList();
     private int counter = 0; //for debugging purposes
     private static double cost =0;
-    //private final com.jarrett.anthony.util.Algorithms.BinaryHeap<Node> binaryHeap = new com.jarrett.anthony.util.Algorithms.BinaryHeap<>((o1, o2) -> 0);
     private static final BinaryHeap<Node> binaryHeap = new BinaryHeap<>(new Comparator<Node>() {
         @Override
         public int compare(Node o1, Node o2) {
@@ -27,6 +27,7 @@ public class AStarPathFinder {
 
     public static void searchPath(String start, String end){
         try{
+            //maybe do something with the return value if it's false/true?
             search(start, end);
         }
         finally{

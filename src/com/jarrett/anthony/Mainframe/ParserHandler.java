@@ -174,10 +174,9 @@ public class ParserHandler extends DefaultHandler {
     public ConcurrentHashMap<String, Integer> printNodeL(){
         for (Map.Entry entry : nodeL.entrySet()) {
             Integer bob = (Integer) entry.getValue();
-            if(bob < 2){
-                nodeL.remove(entry.getKey());            }
+            if (bob < 2)
+                nodeL.remove(entry.getKey());
         }
-
         return nodeL;
     }
 

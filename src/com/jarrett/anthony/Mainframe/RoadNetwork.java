@@ -21,7 +21,8 @@
         private String container3;
         private ArrayList<String> tempList = new ArrayList<>();
         private int counter = 0;
-        private static Node[] adjLists;
+        private static Node[] adjLists= new Node[intersections.size()];
+        private Set<Map.Entry<String, Element>> waySet;
 
 
 
@@ -32,6 +33,8 @@
                 intersections.add(key);
                 }
             //Number of intersections on my map
+            adjLists = new Node[intersections.size()];
+
             System.out.println("Number of intersections: " +intersections.size());
         }
 
@@ -41,34 +44,42 @@
         public void storeWays(Map<String, Element> result) {
             wayList = new HashMap<>(result);
             wayList.keySet().removeIf(key -> !key.startsWith("W"));
+            waySet = wayList.entrySet();
+
         }
 
-        /* Population of adjacency list,
-      prior to neighbour computation */
-        public void populateAdj(Map<String, Element> result) {
-            adjLists = new Node[intersections.size()];
-            /* this process could probably be made more efficient
-            * Currently at O(n), perhaps O(1) is possible */
+
+        //could later remain to populateAdj
+        public void populateAdjList(){
             for (int i = 0; i < intersections.size(); i++) {
                 String bob = String.valueOf(intersections.get(i));
                 adjLists[i] = new Node(bob, null);
             }
+        }
+
+        private void populateAdj2(){
+
+        }
+        /* Population of adjacency list,
+      prior to neighbour computation */
+        public void populateAdj(Map<String, Element> result) {
+            /* this process could probably be made more efficient
+            * Currently at O(n), perhaps O(1) is possible */
             for (int i = 0; i < intersections.size(); i++) {
                 //tempList gets reset
                 tempList.clear();
-                Set<Map.Entry<String, Element>> entrySet = wayList.entrySet();
-                for (Map.Entry entry : entrySet) {
-                    Way w1 = (Way) wayList.get(entry.getKey());
+                for (Map.Entry wayEntry : waySet) {
+                    Way w1 = (Way) wayList.get(wayEntry.getKey());
                     //Checking for nodes within Ways which match our intersection(i)
                     for (Node n : w1.getNodes()) {
-                        if(n !=null) {
+                        if(n !=null)
                             container2 = n.getId();
                             //if we've come across container2 b4, don't chase it up again, so increment the n??
                             //have a list for them, will be of length intersections
-                        }
+
                         //Do any of the ways in this given way (w1) equal our intersection(i)
                         if (container2.contains(intersections.get(i))) {
-                            //Yes to above, it looks like we have found a way which our intersection exists in
+                            //Yes to above, it looks like we have found a way with an intersection
                             //SO, lets find the other intersection which belongs on that Way
                             //This means, searching through same way using our intersections list
                             for(Node n2 : w1.getNodes()) {
@@ -123,10 +134,10 @@
 
         public void printM() {
             System.out.println();
-            for (int v=0; v < adjLists.length; v++) {
-                System.out.print("Head " +adjLists[v]);
+            for (Node adjList : adjLists) {
+                System.out.print("Head " + adjList);
                 //System.out.println("he?"+adjLists[v].adjList+"he?");
-                for (Neighbour nbr = adjLists[v].adjList; nbr != null; nbr = nbr.next) {
+                for (Neighbour nbr = adjList.adjList; nbr != null; nbr = nbr.next) {
                     System.out.print(" --> " + adjLists[nbr.vNum]);
                 }
                 System.out.println();
@@ -137,59 +148,9 @@
             return adjLists;
         }
 
-        public static ArrayList<String> getIntersections() {
+        static ArrayList<String> getIntersections() {
             return intersections;
         }
-
-        //This method will put together the adjacent neighbours
-    //Requirements for an intersection/convergence of ways is that a node be represented within two separate ways.
-        //Rule: In order for it to be an intersection, Node must be present within a minimum of two ways, else void it
-        /* The way this search will work
-        * 1) Take each Node element one by one within list of Nodes
-        * 2) Search through all ways for this Node and store the Ways which it is present in.
-        * 3) If it belongs in more than two ways, then its an intersection
-        * 4) Then the next adjacent intersection along the ways must be found
-        * 5) This requires a similar fashioned search
-        * 5) Once found, those can be stored as the Neighbouring intersections for given Node.
-        * 6) This will also require doing cost calculation (distance) when inputting nodes adjList
-        * 7) Then repeat for next nodes...
-        * */
-
-
-     /*   public String findIntersections(String id) {
-            Set<Map.Entry<String, Element>> entrySet = wayList.entrySet();
-            for (Map.Entry entry : entrySet) {
-                w1 = (Way) wayList.get(entry.getKey());
-                for (Node n : w1.getNodes()) {
-                    container2 = String.valueOf(n);
-                    if (container2.contains(id)) {
-                        count++;
-                    }
-                    if (count == 2) {
-                        inter = id;
-                        count = 0;
-                    }
-                }
-            }
-            if (inter != (null))
-                return inter;
-            else
-                return null;
-        }
-        */
-
-
-        /*public void findAdjacents() {
-            for (int i = 0; i < nodeList.size(); i++) {
-                count = 0;
-                inter = null;
-                container = findIntersections(nodeList.get(i));
-
-                if (container != null) {
-                    intersections.add(container);
-                }
-            }
-            }*/
         }
 
 

@@ -1,5 +1,8 @@
 package com.jarrett.anthony.ClientSide;
 
+/* Implementation credit for guidance goes to:
+ http://ad-teaching.informatik.uni-freiburg.de/route-planning-ss2012/lecture-5.mp4
+  */
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;

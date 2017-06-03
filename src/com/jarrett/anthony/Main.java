@@ -40,6 +40,7 @@ public class Main {
                 ConcurrentHashMap<String, Integer> nodeL = parser.printNodeL();
                 adj.storeNodes(nodeL);
                 adj.storeWays(result);
+                adj.populateAdjList();
                 adj.populateAdj(result);
                 adj.printM();
                 awaitingQuery();

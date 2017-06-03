@@ -22,7 +22,7 @@ import java.net.URL;
  */
 public class GeoCode {
     //Unique API key with capped use, provided by Google.
-    static final String apiKey = "AIzaSyBRtGhmwcSQ7PpqUql4r2IywNDieytjZkw";
+    private static final String apiKey = "AIzaSyBRtGhmwcSQ7PpqUql4r2IywNDieytjZkw";
 
     /**
      * @param address is the location made by the user query
@@ -57,14 +57,9 @@ public class GeoCode {
             xr.parse(inSource);
         }
 
-        catch(IOException ioe)
+        catch(IOException | SAXException ioe)
         {
             ioe.printStackTrace();
-        }
-
-        catch (SAXException se)
-        {
-            se.printStackTrace();
         }
         return GeoCodeHandler.getCords();
     }

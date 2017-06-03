@@ -30,7 +30,7 @@ public class WeightCalcs {
     //Will need to do processing of Node Name and return Lon/Lat
     /* returns from global Euc/Nearest sen/highway type calced here
      * This will be a figure which will go into populateAdj list*/
-    protected static double weight(Node n1, Node n2, String highway) {
+    static double weight(Node n1, Node n2, String highway) {
         //Container the nodes, get their lon/lats
         Node cont1 = new Node(n1.getLat(), n1.getLon());
         Node cont2 = new Node(n2.getLat(), n2.getLon());
@@ -51,7 +51,7 @@ public class WeightCalcs {
 
     /*Haversine formula (great circle distance) -
     For those who are in the earth is flat category, feel free to swap this out for EuclideanDist!(Joke) */
-    protected static double haversineDist(Node cont1, Node cont2) {
+    static double haversineDist(Node cont1, Node cont2) {
         dLat = Math.toRadians(cont1.getLat() - cont2.getLat());
         dLon = Math.toRadians(cont1.getLon() - cont2.getLon());
         lat1 = Math.toRadians(cont2.getLat());

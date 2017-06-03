@@ -17,7 +17,7 @@ public class Sensor{
      *	@param lat The latitude
      *	@param lon The longitude
      */
-    public Sensor(String siteCode, double lat, double lon) {
+    Sensor(String siteCode, double lat, double lon) {
         this.siteCode = siteCode;
         this.lat = lat;
         this.lon = lon;
@@ -29,7 +29,7 @@ public class Sensor{
     /**
      * @param polVal add a pollution value
      */
-    public void addVal(Integer polVal){
+    void addVal(Integer polVal){
         polVals.add(polVal);
     }
 
@@ -50,7 +50,7 @@ public class Sensor{
     /**
      * @return the array of Pollution for site
      */
-    public List getPolArr(){
+    List getPolArr(){
         return polVals;
     }
 

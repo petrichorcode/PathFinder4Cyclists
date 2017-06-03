@@ -39,7 +39,7 @@ function redrawLine() {
 
 
 // Send a query to the server with two co-ordinates
-function redrawLineServer() {
+function queryServer() {
     var url = "http://localhost:8888/?"
         + source.getPosition().lat() + "," + source.getPosition().lng() + ","
         + target.getPosition().lat() + "," + target.getPosition().lng();

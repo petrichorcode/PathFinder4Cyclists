@@ -54,7 +54,7 @@ private static HashMap<String, Sensor> Sensors = new HashMap<String, Sensor>();
     }
 
     /** Displays some statistics about given sensors **/
-    protected static void printStatistics(){
+    static void printStatistics(){
         for(Sensor value : Sensors.values()){
             System.out.println("Site Name: " + value.getSiteCode() +"| " +"Lat: " + value.getLat()
                     + "| "+"Lon: "+ value.getLon()+"| PolVals: "+ value.getPolArr());
