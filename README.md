@@ -14,6 +14,7 @@ This project is an ongoing development to finding the cleanest (pollution-wise) 
 - AStar and Binary Heap work well in conjunction
 
 # Coming Soon
+- An improved adjacency list that will provide more accurate results (perhaps with one-way street implemented)
 - Provide Trip data (Distance/Estimated time) along with the route 
 - Write lots of tests
 
