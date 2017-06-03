@@ -1,6 +1,7 @@
 # Path Finder for cyclists in London
 
-This project is an ongoing development to finding the cleanest (pollution-wise) and safest path for cyclists in London.
+This project is an ongoing development to finding the cleanest (pollution-wise) and safest path for cyclists in London. The scope of this project goes beyond a final university project - developments made after 1/06/2017 are for reasons other than academic pursuits.
+
 
 # How?
 - Taking data from sensors and creating a dispersion model of the city. 
@@ -8,6 +9,7 @@ This project is an ongoing development to finding the cleanest (pollution-wise) 
 - Taking a calculated approach to providing the safest, healthiest, and most efficient route
 
 # Current Progress
+- Flaw in logic about map construction discovered after looking deeper into the construct of Way elements. This has resulted in some over-engineering in the RoadNetwork class that will require plenty of refactoring.
 - A Search for a path can be made from the terminal using Node, Geolocation or address/POI.
 - AStar and Binary Heap work well in conjunction
 
