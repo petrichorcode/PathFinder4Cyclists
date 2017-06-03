@@ -19,5 +19,5 @@ This project is an ongoing development to finding the cleanest (pollution-wise) 
 
 # Current issues/Areas for improvement
 - The dispersion modelling currently does not exist, however pollution data is being retrieved and applied to the algorithms. 
-- The current adjacency list implementation is as a good solution to early development but needs to be improved and have its own class.
+- Development of the adjacency list and implementing one-way streets
 - The Server/Client side is somewhat built, but needs some more technical prowess to get it working
