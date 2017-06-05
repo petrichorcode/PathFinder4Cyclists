@@ -24,7 +24,7 @@ public class Way extends Element {
     //CONSTRUCTOR
     /**
      * Default constructors
-     * @oaram id the object ID
+     * @param id the object ID
      * @param nodes Its nodes
      */
     public Way(long id, List<Node> nodes){

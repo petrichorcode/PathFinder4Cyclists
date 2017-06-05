@@ -8,6 +8,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import com.jarrett.anthony.API_Pollution.SensorsAPI;
 import com.jarrett.anthony.Components.Element;
+import com.jarrett.anthony.Ice_Cream.IceMain;
 import com.jarrett.anthony.Mainframe.ParserHandler;
 import com.jarrett.anthony.Mainframe.RoadNetwork;
 import org.xml.sax.SAXException;
@@ -17,10 +18,10 @@ import static com.jarrett.anthony.Mainframe.SearchMethods.awaitingQuery;
  * This class parses OSM XML
  */
 public class Main {
-
-    public static void main(String[] args) throws FileNotFoundException {
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                public static void main(String[] args) throws FileNotFoundException {
         File input = new File("/home/flower/Documents/PF/src/com/jarrett/anthony/northLondon.xml");
         Map<String,Element> result;
+
         //Check input
         if(!input.exists() || !input.isFile() || !input.canRead()) {
             System.out.println("Can't read input OSM XML.\nCheck if file exists and is readable.");
@@ -44,6 +45,8 @@ public class Main {
                 adj.populateAdj(result);
                 adj.printM();
                 awaitingQuery();
+
+                //IceMain.method();
 
             } catch (IOException | SAXException e){
                 e.printStackTrace();
